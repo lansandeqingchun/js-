@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p> </p>
+    <button>发送</button>
+    <script>
+        var btnObj = document.querySelector("button")
+        var pObj = document.querySelector("p")
+        var cishu = 0
+        btnObj.onclick = function(){
+            if(cishu == 0){
+                cishu ++
+                time1 = new Date
+                pObj.innerHTML = "刚刚"
+            }else if(cishu != 0){
+                time2 = new Date
+                timetemp = (time2.getTime() - time1.getTime()) / 1000
+                if(timetemp > 1 && timetemp < 60){
+                    pObj.innerHTML = Math.floor(timetemp) + "秒前"
+                }else if(timetemp >= 60 && timetemp < 3600){
+                    pObj.innerHTML = Math.floor(timetemp / 60) + "分钟前"
+                }else if(timetemp >= 3600 && timetemp < 86400){
+                    pObj.innerHTML = Math.floor(timetemp / 60 / 60) + "小时前"
+                }else if(timetemp >= 86400 && timetemp < 172800){
+                    pObj.innerHTML = "昨天"
+                }else if(timetemp >= 172800 && timetemp < 259200){
+                    pObj.innerHTML = "2天前"
+                }else if(timetemp >= 259200 && timetemp < 345600){
+                    pObj.innerHTML = "3天前"
+                }else if(timetemp >= 345600){
+                    pObj.innerHTML = time1.getFullYear()+"年"+time1.getMonth()+"月"+time1.getDate()+"日"+" "+time1.getHours()+":"+time1.getMinutes()
+                }
+            }
+        }
+    </script>
+</body>
+</html>
